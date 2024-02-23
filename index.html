@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Камень, Ножницы, Бумага</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Камень-Ножницы-Бумага</h1>
+
+      <div class="content">
+        <div class="scores">
+          <div class="score left">0 / 3</div>
+          <div class="score right">0 / 3</div>
+        </div>
+
+        <div class="sides">
+          <div class="side left">
+            <div class="items">
+              <button class="item" data-item="rock"></button>
+              <button class="item" data-item="paper"></button>
+              <button class="item" data-item="scissors"></button>
+            </div>
+          </div>
+          <div class="side right">
+            <div class="items">
+              <div class="item hidden" data-item="rock"></div>
+              <div class="item hidden" data-item="paper"></div>
+              <div class="item hidden" data-item="scissors"></div>
+              <div class="loading"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="roundStatus hidden"></div>
+
+        <div class="result hidden"></div>
+
+        <button class="play hidden">Играть ещё раз</button>
+      </div>
+    </div>
+
+    <script src="./scripts/main.js"></script>
+  </body>
+</html>

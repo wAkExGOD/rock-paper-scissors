@@ -1,0 +1,192 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --darker: #561c24;
+  --dark: #6d2932;
+  --mid: #cfbba1;
+  --light: #dccab4;
+  --lighter: #e8d8c4;
+  --red: #944e63;
+  --green: #7a9d54;
+  --dark-green: #5e7644;
+}
+
+::selection {
+  background: var(--darker);
+  color: var(--lighter);
+}
+
+body {
+  background: var(--lighter);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.container {
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+    gap: 1rem;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.sides,
+.scores {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.item,
+.loading {
+  width: 6rem;
+  height: 6rem;
+  background-size: 70% 70%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  transition: 0.15s all ease-in-out;
+  background-color: var(--light);
+  border-radius: 50%;
+}
+.item:not([tabindex="-1"]) {
+  cursor: pointer;
+}
+.item:not([tabindex="-1"]):hover {
+  transform: scale(1.08) rotate(4deg);
+  background-color: var(--mid);
+}
+.item[data-item="rock"] {
+  background-image: url("../assets/rock.svg");
+}
+.item[data-item="paper"] {
+  background-image: url("../assets/paper.svg");
+}
+.item[data-item="scissors"] {
+  background-image: url("../assets/scissors.svg");
+}
+.loading {
+  animation: rotating 2s linear infinite;
+  background-image: url("../assets/loading.svg");
+}
+
+.score {
+  font-size: 2rem;
+  font-weight: 300;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  background: var(--light);
+}
+
+.roundStatus,
+.result,
+.play {
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1.5rem;
+  background: var(--red);
+  border: none;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 1rem;
+  }
+}
+.result {
+  animation: fadeIn 0.25s ease-in;
+}
+.result.win {
+  background: var(--dark);
+}
+.result.lose {
+  background: var(--red);
+}
+.play {
+  cursor: pointer;
+  background: var(--green);
+  transition: 0.1s all ease-in-out;
+}
+.play:hover {
+  background: var(--dark-green);
+}
+.roundStatus {
+  animation: fadeIn 0.25s ease-in;
+}
+.roundStatus.draw {
+  background: var(--red);
+}
+.roundStatus.win {
+  background: var(--green);
+}
+.roundStatus.lose {
+  background: var(--red);
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes rotating {
+  0% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.75;
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+  }
+}
