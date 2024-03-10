@@ -47,18 +47,8 @@ userItemsContainer.addEventListener("click", (event) => {
     setItems(userItem, computerItem);
 
     const roundWinner = getRoundWinner(userItem, computerItem);
-
+    setRoundWinner(roundWinner);
     isRoundActive = false;
-    switch (roundWinner) {
-      case sidesMap.USER:
-        setRoundWinner(sidesMap.USER);
-        break;
-      case sidesMap.COMPUTER:
-        setRoundWinner(sidesMap.COMPUTER);
-        break;
-      default:
-        setRoundWinner(sidesMap.DRAW);
-    }
 
     setRoundLoading(false);
     setTimeout(() => {
@@ -164,18 +154,10 @@ function setGameWinner() {
 
   isRoundActive = false;
 
-  switch (winner) {
-    case sidesMap.USER:
-      resultContainer.classList.remove("hidden");
-      resultContainer.classList.add("win");
-      resultContainer.textContent = "Поздравляю! Вы победили!";
-      break;
-    case sidesMap.COMPUTER:
-      resultContainer.classList.remove("hidden");
-      resultContainer.classList.add("lose");
-      resultContainer.textContent = "Вы проиграли :(";
-      break;
-  }
+  resultContainer.classList.remove("hidden");
+  resultContainer.classList.add(winner === sidesMap.USER ? "win" : "lose");
+  resultContainer.textContent =
+    winner === sidesMap.USER ? "Поздравляю! Вы победили!" : "Вы проиграли :(";
 
   playAgainButton.classList.remove("hidden");
 }
